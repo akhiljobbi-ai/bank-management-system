@@ -1,22 +1,20 @@
 # 🏦 Bank Management System
 
-A console-based Bank Management System developed in Python using Object-Oriented Programming principles.
-
-This project simulates basic banking operations such as creating accounts, depositing and withdrawing money, checking balances, changing PINs, and calculating interest. It was built to strengthen OOP concepts, program design, and Git/GitHub workflow.
+A console-based Bank Management System built using **Python** and **Object-Oriented Programming (OOP)**. This project simulates basic banking operations and stores account information permanently using file handling.
 
 ---
 
-## ✨ Features
+## 📌 Features
 
-- ✅ Create a new bank account
-- 💰 Deposit money
-- 💸 Withdraw money (PIN protected)
-- 📊 Check account balance
-- 👤 Display account details
-- 🔐 Change account PIN
-- 📈 Calculate interest for Savings Accounts
-- 🔍 Search accounts using account number
-- 🚫 Prevent duplicate account numbers
+- Create a new bank account
+- Deposit money
+- Withdraw money (with PIN verification)
+- Check account balance
+- Display account details
+- Change account PIN
+- Add interest to savings accounts
+- Persistent data storage using text files
+- Prevent duplicate account numbers
 
 ---
 
@@ -24,63 +22,56 @@ This project simulates basic banking operations such as creating accounts, depos
 
 - Python 3
 - Object-Oriented Programming (OOP)
-- Git
-- GitHub
-
----
-
-## 📚 OOP Concepts Practiced
-
-- Classes and Objects
-- Constructors (`__init__`)
-- Instance Variables
-- Class Variables
-- Methods
-- Encapsulation
-- Helper Methods
-- Code Reusability
+- File Handling
+- Git & GitHub
 
 ---
 
 ## 📂 Project Structure
 
 ```
-Bank Management System
+Bank-Management-System/
 │
-├── BankAccount Class
-│   ├── deposit()
-│   ├── withdraw()
-│   ├── check_balance()
-│   ├── change_pin()
-│   ├── display_account()
-│   ├── add_interest()
-│   └── verify_pin()
-│
-├── find_account()
-│
-└── Menu-Driven Application
+├── Bank_Management_System.py
+├── accounts.txt
+└── README.md
+```
+
+---
+
+## 💾 Data Persistence
+
+Account data is stored in `accounts.txt`.
+
+Whenever an account is created or modified, the program automatically updates the file so that all data is preserved even after the program is closed.
+
+Example:
+
+```
+Akhil,101,5000,SAVINGS,1234,Deposited Rs.500
+Rahul,102,8000,CURRENT,5678,Account Created
 ```
 
 ---
 
 ## ▶️ How to Run
 
-1. Clone the repository
+1. Clone the repository.
 
 ```bash
-git clone https://github.com/akhiljobbi-ai/student-management-system.git
+git clone <repository-url>
 ```
 
-2. Navigate to the project folder
+2. Navigate to the project folder.
 
 ```bash
-cd student-management-system
+cd Bank-Management-System
 ```
 
-3. Run the program
+3. Run the program.
 
 ```bash
-python bank_management.py
+python Bank_Management_System.py
 ```
 
 ---
@@ -100,24 +91,34 @@ python bank_management.py
 
 ---
 
-## ⚠️ Current Limitations
+## 📖 Concepts Practiced
 
-- Account data is stored only in memory.
-- All accounts are lost when the program exits.
-- User input validation for non-numeric values is limited.
-
-These limitations will be addressed in future versions.
+- Classes and Objects
+- Constructors (`__init__`)
+- Instance Variables
+- Class Variables
+- Methods
+- Helper Functions
+- Lists of Objects
+- Searching Objects
+- File Reading
+- File Writing
+- Data Parsing
+- Data Persistence
+- Input Validation
 
 ---
 
-## 🚀 Planned Improvements
+## 🚀 Future Improvements
 
-- 💾 File Handling (Save and Load Accounts)
-- 🗄️ SQLite/MySQL Database Integration
-- 🌐 GUI or Web Interface
-- 🔄 Transaction History
-- 🧪 Improved Input Validation
-- 🔒 Better Authentication and Security
+- Exception handling (`try` / `except`)
+- CSV file support
+- JSON support
+- Database (SQL) integration
+- Graphical User Interface (GUI)
+- Transaction history
+- Account deletion
+- Better input validation
 
 ---
 
@@ -125,22 +126,4 @@ These limitations will be addressed in future versions.
 
 **Akhil Jobbi**
 
-Second-Year AI & Data Science Student
-
-GitHub: https://github.com/akhiljobbi-ai
-
----
-
-## 🎯 Learning Outcome
-
-This project was built to practice software engineering fundamentals, including:
-
-- Designing classes and objects
-- Writing reusable methods
-- Applying business logic
-- Input validation
-- Menu-driven programming
-- Git and GitHub workflow
-- Code organization and refactoring
-
-It serves as a foundation for future projects involving file handling, databases, backend development, and machine learning.
+This project was built as part of my journey to become an AI/ML Engineer through hands-on software engineering projects.

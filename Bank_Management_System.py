@@ -62,13 +62,13 @@ class BankAccount:
         if not self.verify_pin(pin):
             return
 
-        print(f"Account Holder : {self.account_holder}\nAccount Number : {self.account_number}\nAccount Type : {self.account_type}\nBank Name : {BankAccount.bank_name}")
+        print(f"Account Holder : {self.account_holder}\nAccount Number : {self.account_number}\nAccount Type : {self.account_type}\nBank Name : {BankAccount.bank_name}\nBalance : {self.balance}")
     
     def add_interest(self,years,pin):
         if not self.verify_pin(pin):
            return
 
-        if self.account_type != "Savings account" :
+        if self.account_type != "SAVINGS" :
             print("Interest only for savings account")
             return
         interest = (BankAccount.interest_rate/100*self.balance)*years
@@ -83,9 +83,37 @@ class BankAccount:
         else:
             return True
 
+import os
+def load_accounts():
+    accounts=[]
+    print("Current directory:", os.getcwd())
+    print("Files:", os.listdir())
+    with open("accounts.txt","r") as file:
+            data = file.read()
+            if len(data) == 0:
+                return []
+            lines = data.split("\n")
+            for line in lines:
+                if len(line) == 0:
+                    continue
+                else:
+                    account_data=line.split(",")
+                    account = BankAccount(account_data[0],int(account_data[1]),float(account_data[2]),account_data[3],int(account_data[4]))
+                    account.last_transaction=account_data[5]
+                    accounts.append(account)
 
-accounts=[]
+    return accounts
 
+def save_accounts(accounts):
+    with open("accounts.txt","w") as file:
+        for account in accounts:
+            account_line = account.account_holder+","+str(account.account_number)+","+str(account.balance)+","+account.account_type+","+str(account.pin)+","+account.last_transaction
+            file.write(f"{account_line}\n")
+
+
+
+
+accounts=load_accounts()
 def find_account(Accountnumber):
     for account in accounts:
         if account.account_number == Accountnumber: 
@@ -109,11 +137,13 @@ while True:
             print("Account number already exists")
             continue
         initial_balance = float(input("Enter the initial balance : "))
-        account_type=input("Enter the account type : ")
+        account_type=input("Enter the account type : ").upper()
         pin=int(input("Enter the pin : "))
         new_account= BankAccount(account_holder,account_number,initial_balance,account_type,pin)
+        new_account.last_transaction="Account Created"
         print("Account created successfully")
         accounts.append(new_account)
+        save_accounts(accounts)
 
     elif choice == 2 :
         account_number = int(input("Enter the account number : "))
@@ -123,6 +153,8 @@ while True:
             continue
         deposit_amount=float(input("Enter the deposit amount : "))
         account.deposit(deposit_amount)
+        save_accounts(accounts)
+
 
     elif choice == 3:
         account_number = int(input("Enter the account number : "))
@@ -133,6 +165,7 @@ while True:
         withdrawal_amount = float(input("Enter the withdrawal amount : "))
         pin=int(input("Enter the PIN : "))
         account.withdraw(withdrawal_amount,pin)
+        save_accounts(accounts)
 
     elif choice == 4:
         account_number = int(input("Enter the account number : "))
@@ -161,6 +194,7 @@ while True:
         old_pin=int(input("Enter the old pin : "))
         new_pin=int(input("Enter the new pin : "))
         account.change_pin(old_pin,new_pin)
+        save_accounts(accounts)
 
     elif choice == 7:
         account_number = int(input("Enter the account number : "))
@@ -171,6 +205,7 @@ while True:
         pin=int(input("Enter the PIN : "))
         years=float(input("Enter the number of years since account was opened : "))
         account.add_interest(years,pin)
+        save_accounts(accounts)
 
     elif choice == 8:
         print("EXITING.............")
