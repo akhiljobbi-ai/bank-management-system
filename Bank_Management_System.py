@@ -83,11 +83,8 @@ class BankAccount:
         else:
             return True
 
-import os
 def load_accounts():
     accounts=[]
-    print("Current directory:", os.getcwd())
-    print("Files:", os.listdir())
     with open("accounts.txt","r") as file:
             data = file.read()
             if len(data) == 0:

@@ -59,7 +59,7 @@ Rahul,102,8000,CURRENT,5678,Account Created
 1. Clone the repository.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/akhiljobbi-ai/bank-management-system.git
 ```
 
 2. Navigate to the project folder.
