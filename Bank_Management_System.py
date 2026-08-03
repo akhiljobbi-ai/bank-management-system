@@ -117,6 +117,21 @@ def find_account(Accountnumber):
             return account
     return None    
 
+def get_int(message):
+    while True:
+        try: 
+            number = int(input(message))
+            return number
+        except ValueError:
+            print("Invalid Input.")
+def get_float(message):
+    while True:
+        try: 
+            number = float(input(message))
+            return number
+        except ValueError:
+            print("Invalid Input.")
+
 
 
 while True:
@@ -124,18 +139,20 @@ while True:
     print("STATE BANK OF INDIA")
     print("==================================================================\n")
     print("1. Create Account\n2. Deposit\n3. Withdraw\n4. Check Balance\n5. Display Account\n6. Change PIN\n7. Add Interest \n8. Exit")
-    choice = int(input("Enter the choice :\n"))
+
+    choice = get_int("Enter the choice :\n")
+
 
     if choice == 1:
         account_holder = input("Enter the name of the account holder : ")
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is not None:
             print("Account number already exists")
             continue
-        initial_balance = float(input("Enter the initial balance : "))
+        initial_balance = get_float("Enter the initial balance : ")
         account_type=input("Enter the account type : ").upper()
-        pin=int(input("Enter the pin : "))
+        pin=get_int("Enter the pin : ")
         new_account= BankAccount(account_holder,account_number,initial_balance,account_type,pin)
         new_account.last_transaction="Account Created"
         print("Account created successfully")
@@ -143,64 +160,65 @@ while True:
         save_accounts(accounts)
 
     elif choice == 2 :
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is None:
             print("Account does not exist ")
             continue
-        deposit_amount=float(input("Enter the deposit amount : "))
+        
+        deposit_amount=get_float("Enter the deposit amount : ")
         account.deposit(deposit_amount)
         save_accounts(accounts)
 
 
     elif choice == 3:
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is None:
             print("Account does not exist ")
             continue
-        withdrawal_amount = float(input("Enter the withdrawal amount : "))
-        pin=int(input("Enter the PIN : "))
+        withdrawal_amount = get_float("Enter the withdrawal amount : ")
+        pin=get_int("Enter the PIN : ")
         account.withdraw(withdrawal_amount,pin)
         save_accounts(accounts)
 
     elif choice == 4:
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is None:
             print("Account does not exist ")
             continue
-        pin=int(input("Enter the PIN : "))
+        pin=get_int("Enter the PIN : ")
         account.check_balance(pin)
 
     elif choice == 5:
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is None:
             print("Account does not exist ")
             continue
-        pin=int(input("Enter the PIN : "))
+        pin=get_int("Enter the PIN : ")
         account.display_account(pin)
 
     elif choice == 6:
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is None:
             print("Account does not exist ")
             continue
-        old_pin=int(input("Enter the old pin : "))
-        new_pin=int(input("Enter the new pin : "))
+        old_pin=get_int("Enter the old pin : ")
+        new_pin=get_int("Enter the new pin : ")
         account.change_pin(old_pin,new_pin)
         save_accounts(accounts)
 
     elif choice == 7:
-        account_number = int(input("Enter the account number : "))
+        account_number = get_int("Enter the account number : ")
         account = find_account(account_number)
         if account is None:
             print("Account does not exist ")
             continue
-        pin=int(input("Enter the PIN : "))
-        years=float(input("Enter the number of years since account was opened : "))
+        pin=get_int("Enter the PIN : ")
+        years=get_float("Enter the number of years since account was opened : ")
         account.add_interest(years,pin)
         save_accounts(accounts)
 
