@@ -1,8 +1,3 @@
-# 🏦 Bank Management System
-
-A console-based Bank Management System built using **Python** and **Object-Oriented Programming (OOP)**. This project simulates basic banking operations and stores account information permanently using file handling.
-
----
 
 # 🏦 Bank Management System
 
