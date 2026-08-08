@@ -1,6 +1,6 @@
 #Bank Management System
 #Author : Akhil Jobbi
-
+import csv
 class BankAccount:
     bank_name = "STATE BANK OF INDIA"
     interest_rate=4
@@ -16,7 +16,7 @@ class BankAccount:
 
         if deposit_amount>0:
             self.balance += deposit_amount
-            self.last_transaction = f"Deposited Rs.{deposit_amount}"
+            self.last_transaction = f"Deposited Rs.{deposit_amount},through UPI"
             print(f"{deposit_amount} successfully deposited \n The current balance is {self.balance}")
         else :
             print("Invalid Input")
@@ -85,27 +85,25 @@ class BankAccount:
 
 def load_accounts():
     accounts=[]
-    with open("accounts.txt","r") as file:
-            data = file.read()
-            if len(data) == 0:
-                return []
-            lines = data.split("\n")
-            for line in lines:
-                if len(line) == 0:
-                    continue
-                else:
-                    account_data=line.split(",")
-                    account = BankAccount(account_data[0],int(account_data[1]),float(account_data[2]),account_data[3],int(account_data[4]))
-                    account.last_transaction=account_data[5]
+    try:
+        with open("accounts.csv","r") as file:
+                reader = csv.reader(file)
+                for row in reader :
+                    if not row:
+                        continue
+                    account = BankAccount(row[0],int(row[1]),float(row[2]),row[3],int(row[4]))
+                    account.last_transaction=row[5]
                     accounts.append(account)
-
+    except FileNotFoundError:
+        return []
     return accounts
 
 def save_accounts(accounts):
-    with open("accounts.txt","w") as file:
+    with open("accounts.csv","w") as file:
+        writer = csv.writer(file)
         for account in accounts:
-            account_line = account.account_holder+","+str(account.account_number)+","+str(account.balance)+","+account.account_type+","+str(account.pin)+","+account.last_transaction
-            file.write(f"{account_line}\n")
+            writer.writerow([account.account_holder,account.account_number,account.balance,account.account_type,account.pin,account.last_transaction])
+
 
 
 
