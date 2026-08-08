@@ -91,36 +91,44 @@ python Bank_Management_System.py
 
 ---
 
-## 📖 Concepts Practiced
+## 📌 Features
 
-- Classes and Objects
-- Constructors (`__init__`)
-- Instance Variables
-- Class Variables
-- Methods
-- Helper Functions
-- Lists of Objects
-- Searching Objects
-- File Reading
-- File Writing
-- Data Parsing
-- Data Persistence
-- Input Validation
+- Create a new bank account
+- Deposit money
+- Withdraw money (with PIN verification)
+- Check account balance
+- Display account details
+- Change account PIN
+- Add interest to savings accounts
+- Track the last transaction
+- Persistent data storage using CSV
+- Prevent duplicate account numbers
+- Input validation using reusable helper functions
+- Handle missing data files gracefully
+- Properly handle commas inside CSV fields
+
+---
+
+## 🛠️ Technologies Used
+
+- Python 3
+- Object-Oriented Programming (OOP)
+- File Handling
+- CSV (`csv.reader` and `csv.writer`)
+- Exception Handling
+- Git & GitHub
 
 ---
 
-## 🚀 Future Improvements
+## 📂 Project Structure
 
-- Exception handling (`try` / `except`)
-- CSV file support
-- JSON support
-- Database (SQL) integration
-- Graphical User Interface (GUI)
-- Transaction history
-- Account deletion
-- Better input validation
-
----
+```text
+Bank-Management-System/
+│
+├── Bank_Management_System.py
+├── accounts.csv
+├── README.md
+└── .gitignore
 
 ## 👨‍💻 Author
 
