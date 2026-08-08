@@ -4,6 +4,12 @@ A console-based Bank Management System built using **Python** and **Object-Orien
 
 ---
 
+# 🏦 Bank Management System
+
+A console-based Bank Management System built using **Python** and **Object-Oriented Programming (OOP)**. This project simulates basic banking operations, handles invalid user input, and stores account information permanently using CSV file handling.
+
+---
+
 ## 📌 Features
 
 - Create a new bank account
@@ -13,8 +19,12 @@ A console-based Bank Management System built using **Python** and **Object-Orien
 - Display account details
 - Change account PIN
 - Add interest to savings accounts
-- Persistent data storage using text files
+- Track the last transaction
+- Persistent data storage using CSV
 - Prevent duplicate account numbers
+- Input validation using reusable helper functions
+- Handle missing data files gracefully
+- Properly handle commas inside CSV fields
 
 ---
 
@@ -23,21 +33,21 @@ A console-based Bank Management System built using **Python** and **Object-Orien
 - Python 3
 - Object-Oriented Programming (OOP)
 - File Handling
+- CSV (`csv.reader` and `csv.writer`)
+- Exception Handling
 - Git & GitHub
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 Bank-Management-System/
 │
 ├── Bank_Management_System.py
-├── accounts.txt
-└── README.md
-```
-
----
+├── accounts.csv
+├── README.md
+└── .gitignore
 
 ## 💾 Data Persistence
 
@@ -91,44 +101,34 @@ python Bank_Management_System.py
 
 ---
 
-## 📌 Features
+## 📖 Concepts Practiced
 
-- Create a new bank account
-- Deposit money
-- Withdraw money (with PIN verification)
-- Check account balance
-- Display account details
-- Change account PIN
-- Add interest to savings accounts
-- Track the last transaction
-- Persistent data storage using CSV
-- Prevent duplicate account numbers
-- Input validation using reusable helper functions
-- Handle missing data files gracefully
-- Properly handle commas inside CSV fields
-
----
-
-## 🛠️ Technologies Used
-
-- Python 3
-- Object-Oriented Programming (OOP)
-- File Handling
-- CSV (`csv.reader` and `csv.writer`)
-- Exception Handling
-- Git & GitHub
+- Classes and Objects
+- Constructors (`__init__`)
+- Instance Variables
+- Class Variables
+- Methods
+- Helper Functions
+- Lists of Objects
+- Searching Objects
+- File Reading
+- File Writing
+- Data Parsing
+- Data Persistence
+- Input Validation
 
 ---
 
-## 📂 Project Structure
+## 🚀 Future Improvements
 
-```text
-Bank-Management-System/
-│
-├── Bank_Management_System.py
-├── accounts.csv
-├── README.md
-└── .gitignore
+- JSON support
+- Database (SQL) integration
+- Graphical User Interface (GUI)
+- Transaction history
+- Account deletion
+- Better input validation
+
+---
 
 ## 👨‍💻 Author
 
