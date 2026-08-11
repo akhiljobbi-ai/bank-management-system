@@ -1,0 +1,26 @@
+[
+    {
+        "account_holder": "Akhil Jobbi",
+        "account_number": 1,
+        "balance": 11000.0,
+        "account_type": "SAVINGS",
+        "pin": 1234,
+        "last_transaction": "Deposited Rs.1000.0"
+    },
+    {
+        "account_holder": "Akhil ,Jr.",
+        "account_number": 2,
+        "balance": 2500.0,
+        "account_type": "SAVINGS",
+        "pin": 2345,
+        "last_transaction": "Deposited Rs.1000.0,through UPI"
+    },
+    {
+        "account_holder": "Ramesh",
+        "account_number": 3,
+        "balance": 1000.0,
+        "account_type": "SAVINGS",
+        "pin": 1234,
+        "last_transaction": "Account Created"
+    }
+]

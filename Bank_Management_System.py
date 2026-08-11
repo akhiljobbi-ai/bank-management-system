@@ -1,6 +1,7 @@
 #Bank Management System
 #Author : Akhil Jobbi
 import csv
+import json
 class BankAccount:
     bank_name = "STATE BANK OF INDIA"
     interest_rate=4
@@ -86,24 +87,26 @@ class BankAccount:
 def load_accounts():
     accounts=[]
     try:
-        with open("accounts.csv","r") as file:
-                reader = csv.reader(file)
-                for row in reader :
-                    if not row:
-                        continue
-                    account = BankAccount(row[0],int(row[1]),float(row[2]),row[3],int(row[4]))
-                    account.last_transaction=row[5]
-                    accounts.append(account)
+        with open("accounts.json","r") as file:
+            accounts_data=json.load(file)
+            for account_data in accounts_data:
+                account=BankAccount(account_data["account_holder"],int(account_data["account_number"]),float(account_data["balance"]),account_data["account_type"],int(account_data["pin"]))
+                account.last_transaction=account_data["last_transaction"]
+                accounts.append(account)
     except FileNotFoundError:
         return []
     return accounts
 
 def save_accounts(accounts):
-    with open("accounts.csv","w") as file:
-        writer = csv.writer(file)
-        for account in accounts:
-            writer.writerow([account.account_holder,account.account_number,account.balance,account.account_type,account.pin,account.last_transaction])
+    accounts_data=[]
 
+    for account in accounts:
+        account_data = {"account_holder":account.account_holder,"account_number":account.account_number,"balance": account.balance,"account_type": account.account_type,"pin": account.pin,"last_transaction": account.last_transaction}
+        accounts_data.append(account_data)
+
+    with open("accounts.json","w") as file:
+        json.dump(accounts_data,file,indent=4)
+    
 
 
 
@@ -133,6 +136,9 @@ def get_float(message):
 
 
 while True:
+    account = {"account_holder":"Akhil Jobbi","account_number":3,"balance":10000,"transactions":["Account created","Deposited rs500","Withdrawn rs 200"]}
+    with open("test.json","w") as file :
+        json.dump(account,file)
     print("==================================================================\n")
     print("STATE BANK OF INDIA")
     print("==================================================================\n")
@@ -140,7 +146,7 @@ while True:
 
     choice = get_int("Enter the choice :\n")
 
-
+    
     if choice == 1:
         account_holder = input("Enter the name of the account holder : ")
         account_number = get_int("Enter the account number : ")
